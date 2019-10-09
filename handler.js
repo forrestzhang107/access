@@ -44,7 +44,7 @@ function getSourceIp(payload) {
 }
 
 async function getValue(payload) {
-  if (!payload.isAuthenticated) throw new Error('unauthorized')
+  if (!payload.isAuthenticated) throw new Error('Unauthorized')
   return await files.getValue(payload.key)
 }
 
