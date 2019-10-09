@@ -1,0 +1,36 @@
+
+service: access
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: dev
+  region: us-west-1
+  timeout: 30
+  memorySize: 128
+
+functions:
+  index:
+    handler: handler.index
+    events:
+      - http:
+          path: /
+          method: get
+  isAuthenticated:
+    handler: handler.isAuthenticated
+    events:
+      - http:
+          path: /is-authenticated
+          method: get
+  getSourceIp:
+    handler: handler.getSourceIp
+    events:
+      - http:
+          path: /get-source-ip
+          method: get
+  getValue:
+    handler: handler.getValue
+    events:
+      - http:
+          path: /get-value
+          method: get
