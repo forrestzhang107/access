@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const files = require('./files')
 const program = require('commander')
 

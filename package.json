@@ -1,6 +1,5 @@
 {
   "name": "access",
-  "bin": "./index.js",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
