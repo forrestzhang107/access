@@ -5,5 +5,5 @@ jspm_packages
 # Serverless directories
 .serverless
 
-whitelist
-store
+store.json
+whitelist.json

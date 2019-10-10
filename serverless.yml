@@ -34,3 +34,9 @@ functions:
       - http:
           path: /get-value
           method: get
+  getValues:
+    handler: handler.getValues
+    events:
+      - http:
+          path: /get-values
+          method: get

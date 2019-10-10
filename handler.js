@@ -35,20 +35,31 @@ function index() {
   return 'Welcome to access.'
 }
 
+module.exports.index = sls(index)
+
 function isAuthenticated(payload) {
   return payload.isAuthenticated
 }
 
+module.exports.isAuthenticated = sls(isAuthenticated)
+
 function getSourceIp(payload) {
   return payload.sourceIp
 }
+
+module.exports.getSourceIp = sls(getSourceIp)
 
 async function getValue(payload) {
   if (!payload.isAuthenticated) throw new Error('Unauthorized')
   return await files.getValue(payload.key)
 }
 
-module.exports.index = sls(index)
-module.exports.isAuthenticated = sls(isAuthenticated)
-module.exports.getSourceIp = sls(getSourceIp)
 module.exports.getValue = sls(getValue)
+
+async function getValues(payload) {
+  const keys = payload.keys.split(',')
+  if (!payload.isAuthenticated) throw new Error('Unauthorized')
+  return await files.getValues(keys)
+}
+
+module.exports.getValues = sls(getValues)

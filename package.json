@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/forrestzhang107/access/issues"
   },
-  "homepage": "https://github.com/forrestzhang107/access#readme"
+  "homepage": "https://github.com/forrestzhang107/access#readme",
+  "dependencies": {
+    "commander": "^3.0.2"
+  }
 }
