@@ -2,35 +2,39 @@
 
 Serverlessly fetch keys, passwords, and credentials using IP whitelist validation.
 
-## Setup
+## Installation
 
-Add keys and credentials to the local store using the Access CLI:
+Run `npm link` in the root directory to install the Access CLI.
 
-`node run add-cred <key> <value>`
+## Configuration
+
+Add keys and credentials to the local store:
+
+`access add-cred <key> <value>`
 
 Keys can be removed:
 
-`node run remove-cred <key>`
+`access remove-cred <key>`
 
 To print all keys in the store:
 
-`node run print-store`
+`access print-store`
 
-To print key-value pairs in the store:
+To print all key-value pairs in the store:
 
-`node run print-store -v`
+`access print-store -v`
 
 Once you have configured your keys, add your client IPs to the whitelist:
 
-`node run add-ip <ip>`
+`access add-ip <ip>`
 
 IPs can be removed:
 
-`node run remove-ip <ip>`
+`access remove-ip <ip>`
 
 To print whitelisted IPs:
 
-`node run print-ips`
+`access print-ips`
 
 You can now deploy your endpoint:
 
@@ -40,21 +44,24 @@ You can now deploy your endpoint:
 
 Once your serverless endpoint is deployed, you can fetch your stored credentials using GET as long as the client IP is present in the whitelist.
 
-To retrieve a single credential:
+Retrieve a single credential:
 
 `GET /get-value?key=KEY_ID`
 
-To retrieve multiple credentials:
+Retrieve multiple credentials:
 
 `GET /get-values?keys=KEY_1,KEY_2,KEY_3`
 
 ## Utilities
 
-To check your IP:
+Check your IP:
 
 `GET /get-source-ip`
 
-To check your authentication status:
+Check your authentication status:
 
 `GET /is-authenticated`
 
+## Uninstall
+
+Run `npm unlink` in the root directory to uninstall the Access CLI
