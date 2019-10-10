@@ -39,7 +39,7 @@ function removeIP(ip) {
   if (!whitelist.includes(ip)) return console.log('IP ' + ip + ' not found in whitelist')
   util.removeItem(whitelist, ip)
   writeJSON('whitelist', whitelist)
-  console.log('successfully removed IP ' + ip + 'from whitelist')
+  console.log('successfully removed IP ' + ip + ' from whitelist')
 }
 
 exports.removeIP = removeIP
