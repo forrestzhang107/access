@@ -2,8 +2,8 @@ const files = require('./files')
 const program = require('commander')
 
 program
-  .command('add-ip <ip>')
-  .action(ip => files.addIP(ip))
+  .command('add-ip <ip> <desc>')
+  .action((ip, desc) => files.addIP(ip, desc))
 
 program
   .command('remove-ip <ip>')

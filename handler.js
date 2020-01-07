@@ -6,7 +6,8 @@ function sls(service) {
       const payload = event.queryStringParameters || {}
       const sourceIp = event.requestContext.identity.sourceIp
       const whitelist = await files.getWhitelist()
-      const isAuthenticated = whitelist.includes(sourceIp)
+      const ipList = Object.keys(whitelist)
+      const isAuthenticated = ipList.includes(sourceIp)
       payload.sourceIp = sourceIp
       payload.isAuthenticated = isAuthenticated
       const data = await service(payload)

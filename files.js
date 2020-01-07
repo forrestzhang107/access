@@ -17,17 +17,18 @@ function writeJSON(path, data) {
 
 function getWhitelist() {
   let whitelist = getJSON('whitelist')
-  if (!whitelist) whitelist = []
-  return whitelist
+  return whitelist ? whitelist : {}
 }
 
 exports.getWhitelist = getWhitelist
 
-function addIP(ip) {
+function addIP(ip, description) {
   if (ip.split('.').length != 4) return console.log('IP ' + ip + ' is invalid')
+  if (!description) return console.log('Please enter a valid description.')
   const whitelist = getWhitelist()
-  if (whitelist.includes(ip)) return console.log('IP ' + ip + ' already exists in whitelist')
-  whitelist.push(ip)
+  const ipList = Object.keys(whitelist)
+  if (ipList.includes(ip)) return console.log('IP ' + ip + ' already exists in whitelist')
+  whitelist[ip] = description
   writeJSON('whitelist', whitelist)
   console.log('successfully added IP ' + ip + ' to whitelist')
 }
@@ -36,8 +37,9 @@ exports.addIP = addIP
 
 function removeIP(ip) {
   const whitelist = getWhitelist()
-  if (!whitelist.includes(ip)) return console.log('IP ' + ip + ' not found in whitelist')
-  util.removeItem(whitelist, ip)
+  const ipList = Object.keys(whitelist)
+  if (!ipList.includes(ip)) return console.log('IP ' + ip + ' not found in whitelist')
+  delete whitelist[ip]
   writeJSON('whitelist', whitelist)
   console.log('successfully removed IP ' + ip + ' from whitelist')
 }
