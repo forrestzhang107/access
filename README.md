@@ -20,9 +20,9 @@ To print all key-value pairs in the store:
 
 `node access print-store -v`
 
-Once you have configured your keys, add your client IPs to the whitelist:
+Once you have configured your keys, add your IPs with description to the whitelist:
 
-`node access add-ip <ip>`
+`node access add-ip <ip> <desc>`
 
 IPs can be removed:
 
